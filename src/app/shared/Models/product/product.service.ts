@@ -31,4 +31,9 @@ export class ProductService {
     deleteProduct(idProduct: number): Observable<Object>{
       return this.httpClient.delete(`${this.baseURL}/delete/${idProduct}`);
     }
+    getProductsByCategory(id:number|undefined): Observable<Product[]>{
+      return this.httpClient.get<Product[]>(`/server/GestionProd/productsByCategory/${id}`);
+    }
   }
+
+  

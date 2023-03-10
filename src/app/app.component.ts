@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DialogComponent } from './dialog/dialog.component';
 
 @Component({
@@ -11,14 +12,20 @@ export class AppComponent {
   title = 'GestionDesProduitFront';
 
   
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,private router: Router) {
 
   }
+  goToCategories(){
+    this.router.navigate(['/categories']);
 
-  openDialog() {
-    this.dialog.open(DialogComponent, {
-     width:'30%',
-     height:'63%',
-    });
   }
+goToProducts(){
+  this.router.navigate(['/products']);
+
+}
+goToClients(){
+  this.router.navigate(['/clients']);
+
+}
+
 }

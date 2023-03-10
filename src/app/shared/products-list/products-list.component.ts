@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Product } from '../product/product';
-import { ProductService } from '../product/product.service';
+import { Product } from '../Models/product/product';
+import { ProductService } from '../Models/product/product.service';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
@@ -10,6 +10,8 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { SwallService } from 'src/app/swallService/swall.service';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { DeletePopUpComponent } from 'src/app/delete-pop-up/delete-pop-up.component';
+import { CategoryService } from '../Models/category/category.service';
+import { Category } from '../Models/category/category';
 
 
 
@@ -20,9 +22,9 @@ import { DeletePopUpComponent } from 'src/app/delete-pop-up/delete-pop-up.compon
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
-  displayedColumns: string[] = ['idProduct','name', 'description', 'prix', 'quantiteStock','action'];
+  displayedColumns: string[] = ['name', 'description', 'prix', 'quantiteStock','category','action'];
   dataSource!: MatTableDataSource<Product>;
-
+  categories?:Category[];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   products : Product[] = [];
@@ -33,15 +35,20 @@ export class ProductsListComponent implements OnInit {
     private router: Router,
     private dialog: MatDialog,
     private swallService: SwallService,
-
+    private categoryService: CategoryService
     ){ }
 
 
   ngOnInit(): void {
     this.getProducts();
+    console.log(this.products)
   }
 
    getProducts(){
+    this.categoryService.getCategoriesList().subscribe(data=>{
+      this.categories=data;
+      console.log(this.categories)      
+    })
     this.loading=true;
     this.productService.getProductsList().subscribe({
       next: (res) => {
@@ -61,14 +68,14 @@ export class ProductsListComponent implements OnInit {
   editProduct(row:any){
     this.dialog.open(DialogComponent,{
       width:'30%',
-      height:'63%',
+      height:'85%',
       data:row
     })
   }
   openDeletePopUp(row:any){ {
     this.dialog.open(DeletePopUpComponent, {
-     width:'32%',
-     height:'16%',
+     width:'34%',
+     height:'21%',
      data: row.idProduct
      
     });
@@ -84,6 +91,17 @@ export class ProductsListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
- 
+  openDialog() {
+    this.dialog.open(DialogComponent, {
+     width:'30%',
+     height:'84%',
+    });
+  }
+
+  filter(value:any){
+    this.productService.getProductsByCategory(value.id).subscribe(data=>{
+      this.dataSource.data=data;
+    })
+  }
 
   }

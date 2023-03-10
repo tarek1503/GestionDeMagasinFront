@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>{{titre}}</h1>
+
+<div mat-dialog-content>  
+  <form [formGroup]="clientForm">
+  <mat-form-field appearance="outline">
+    <mat-label> Nom </mat-label>
+    <input formControlName="lastName" matInput placeholder="Nom">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Prénom</mat-label>
+    <input formControlName="firstName" matInput placeholder="prénom">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Numéro de Téléphone</mat-label>
+    <input formControlName="mobile" matInput placeholder="Numéro de téléphone">
+  </mat-form-field>
+ </form>
+</div>
+
+
+<div mat-dialog-action [align]="'end'">
+<button mat-raised-button color ="warn" mat-dialog-close>Close</button>
+<button style="margin-left: 8px; " mat-raised-button color ="primary" (click)="addClient()">{{actionBtn}}</button>
+
+</div>

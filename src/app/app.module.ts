@@ -24,6 +24,13 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import { DeletePopUpComponent } from './delete-pop-up/delete-pop-up.component';
 import { ProductsListComponent } from './shared/products-list/products-list.component';
+import {MatMenuModule} from "@angular/material/menu";
+import { ClientsListComponent } from './shared/clients-list/clients-list.component';
+import { DeleteClientPopUpComponent } from './delete-client-pop-up/delete-client-pop-up.component';
+import { DialogClientComponent } from './dialog-client/dialog-client.component';
+import { DeleteCategoryPopUpComponent } from './delete-category-pop-up/delete-category-pop-up.component';
+import { DialogCategoryComponent } from './dialog-category/dialog-category.component';
+import { CategoriesListComponent } from './shared/categories-list/categories-list.component';
 
 
 @NgModule({
@@ -32,7 +39,12 @@ import { ProductsListComponent } from './shared/products-list/products-list.comp
     DialogComponent,
     ProductsListComponent,
     DeletePopUpComponent,
- 
+    ClientsListComponent,
+    DeleteClientPopUpComponent,
+    DialogClientComponent,
+    DeleteCategoryPopUpComponent,
+    DialogCategoryComponent,
+    CategoriesListComponent
   
   ],
   imports: [
@@ -55,7 +67,8 @@ import { ProductsListComponent } from './shared/products-list/products-list.comp
     AppRoutingModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

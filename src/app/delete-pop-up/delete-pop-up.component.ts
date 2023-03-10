@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ProductService } from '../shared/product/product.service';
+import { ProductService } from '../shared/Models/product/product.service';
 import { SwallService } from '../swallService/swall.service';
 
 @Component({

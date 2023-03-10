@@ -1,12 +1,43 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Spark IT</span>
-  <span class="example-spacer"></span>
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between" style="justify-content: space-between;">
+  <span>
+    <img src="../assets/spark.png" alt="logo-spark"style="width:138px;height:42px;">
+    <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
+      
+  <button (click)="goToCategories()"  mat-button>
+    <mat-icon>view_list</mat-icon>
+    Catégorie
+  </button><button (click)="goToProducts()"  mat-button>
+    <mat-icon> local_dining</mat-icon>
 
-  <button mat-raised-button color="warn" (click)="openDialog()">Ajouter des Produits</button>
+    Produits
+  </button>
+    <button (click)="goToClients()"  mat-button>
+    <mat-icon> contacts</mat-icon>
+    Clients
+  </button>
+
+
+  </span>
+
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+
+    <div style="float: right">
+      <button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm mat-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
 
 </mat-toolbar>
+
+<mat-menu #menu="matMenu" x-position="before">
+  <button mat-menu-item routerLink="/">
+    <mat-icon>home</mat-icon>
+    Accueil
+  </button>
+
+
+
+</mat-menu>
 
 <router-outlet></router-outlet>

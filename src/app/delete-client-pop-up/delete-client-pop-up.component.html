@@ -1,0 +1,9 @@
+<div class="container p-0 my-1">
+    <h3>Êtes-vous sûr de vouloir supprimer définitivement
+     ce Client ?</h3>
+  </div>
+  <div mat-dialog-actions [align]="'center'">
+    <button mat-raised-button mat-dialog-close>Annuler</button>
+  
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="confirmDelete()">Supprimer</button>
+  </div>

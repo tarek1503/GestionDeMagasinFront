@@ -20,6 +20,14 @@
         <mat-label>Description</mat-label>
         <textarea formControlName="description" matInput></textarea>
   </mat-form-field>
+  <mat-form-field appearance="fill">
+      <mat-label>Choisir une catégorie</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories" [value]="category" >{{category.name}}</mat-option>
+
+      </mat-select>
+    </mat-form-field>
+    
  </form>
 </div>
 
